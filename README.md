@@ -10,7 +10,7 @@ For this part, we are using command to get the adress information of the server.
 
 ![terminal__q2](https://github.com/user-attachments/assets/958ac06c-1a67-475a-b696-94b42c478c39)
 
-We ara able to display the information of the server in the terminal
+We are able to display the information of the server in the terminal
 
 
 
