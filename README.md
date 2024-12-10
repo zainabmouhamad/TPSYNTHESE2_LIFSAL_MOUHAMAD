@@ -7,6 +7,8 @@ In a file .c, there is command-line arguments in the gettftp and puttftp program
 
 Question 2:
 For this part, we are using command to get the adress information of the server.
+![alt text](images/terminal_q2)
+
 
 
 
