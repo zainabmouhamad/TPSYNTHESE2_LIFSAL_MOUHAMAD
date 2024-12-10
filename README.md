@@ -7,3 +7,4 @@ In a file .c, there is command-line arguments in the gettftp and puttftp program
 
 Question 2:
 For this part, we are using command to get the adress information of the server.
+![alt text](C:\Users\zaina\Downloads\WhatsApp Image 2024-12-10 at 09.46.56.jpeg)
