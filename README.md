@@ -9,3 +9,4 @@ Question 2:
 For this part, we are using command to get the adress information of the server.
 ![Description of image](images/terminal__q2.jpeg)
 
+
