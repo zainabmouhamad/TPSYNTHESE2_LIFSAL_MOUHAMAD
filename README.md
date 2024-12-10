@@ -7,7 +7,7 @@ In a file .c, there is command-line arguments in the gettftp and puttftp program
 
 Question 2:
 For this part, we are using command to get the adress information of the server.
-![alt text](C:\Users\zaina\Documents\GitHub\TPSYNTHESE2_LIFSAL_MOUHAMAD\terminal__q2.jpeg)
+![alt text](blob:https://web.whatsapp.com/2319eb72-a5e9-40b3-914d-c75cea6e786e)
 
 
 
