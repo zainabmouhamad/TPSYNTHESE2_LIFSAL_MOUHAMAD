@@ -1,0 +1,63 @@
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    // Extract command-line arguments
+    const char *host = argv[1];  // The TFTP server address
+    const char *file = argv[2];  // The file to be transferred
+    const char *port = argv[3];  // The port number for the TFTP server
+
+    printf("Serveur TFTP : %s\n", host);
+    printf("File : %s\n", file);
+    printf("Port : %s\n", port);
+
+    int e;  // Variable to hold error codes
+    int sockfd; 
+    struct addrinfo hints;  
+    
+    // Initialize the hints structure to zero
+    memset(&hints, 0, sizeof(struct addrinfo));
+
+    struct addrinfo *res, *r;  // Pointers to store the result of getaddrinfo()
+
+    // Set the family and protocol for the socket (IPv4 and UDP)
+    hints.ai_family = AF_INET;      // IPv4 address family
+    hints.ai_protocol = IPPROTO_UDP; // Use UDP protocol
+    hints.ai_socktype = SOCK_DGRAM; // Socket type for UDP (Datagram)
+
+    // Get address info for the server using getaddrinfo()
+    e = getaddrinfo(argv[1], argv[3], &hints, &res);
+   
+    // Check if getaddrinfo() fails
+    if (e != 0) {
+        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(e));  
+        return EXIT_FAILURE;  
+    }
+
+    // Print out information about the address structure 
+    for (r = res; r != NULL; r = r->ai_next) {
+        printf("Famille =%d ,type socket =%d ,protocol=%d\n", r->ai_family, r->ai_socktype, r->ai_protocol);
+    }
+
+    // Create the UDP socket using socket() function
+    sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    
+    // Check if the socket creation failed
+    if (sockfd == -1) {
+        perror("socket");  
+        freeaddrinfo(res);  
+        exit(EXIT_FAILURE); 
+    }
+
+    // If socket creation succeeds, print the socket descriptor
+    printf("Socket created successfully, socket descriptor : %d\n", sockfd);
+
+    // Free the address info structure
+    freeaddrinfo(res);
+
+    exit(EXIT_SUCCESS);  
+}
