@@ -4,11 +4,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+
+
 int main(int argc, char *argv[]) 
 {
-  const char *host = argv[1];
-  const char *file = argv[2];
-  const char *port = argv[3];
+// Extract command-line arguments passed to the program
+  const char *host = argv[1]; // The server address (TFTP server)
+  const char *file = argv[2]; // The file to be transferred
+  const char *port = argv[3]; // The port number for the TFTP server
+
+
   printf("Serveur TFTP : %s\n", host);
   printf("File : %s\n", file);
   printf("Port : %s\n", port);
