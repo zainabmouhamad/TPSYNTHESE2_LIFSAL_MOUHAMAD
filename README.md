@@ -14,3 +14,4 @@ We are able to display the information of the server in the terminal
 
 
 
+![wireshark_q2](https://github.com/user-attachments/assets/8d5d9268-1831-4add-b3b2-4537190ed337)
