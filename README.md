@@ -11,11 +11,10 @@ For this part, we are using command to get the adress information of the server.
 ![terminal__q2](https://github.com/user-attachments/assets/958ac06c-1a67-475a-b696-94b42c478c39)
 
 We are able to display the information of the server in the terminal
-<<<<<<< HEAD
+
 
 Question 3:
-=======
->>>>>>> 53bbc4f6a8db4ed49e468019f9d024511a0382c9
+Socket reservation involves using socket() to create a network communication point with the server, then checking that the returned descriptor is valid (not -1).
 
 
 
