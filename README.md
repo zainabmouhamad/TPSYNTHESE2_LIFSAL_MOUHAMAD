@@ -25,3 +25,8 @@ Question 3:
 We will use socket reservation that involves using socket() to create a network communication point with the server, then checking that the returned descriptor is valid (not -1).
 We can see in the terminal that the socket is created:
 ![terminal_q3](https://github.com/user-attachments/assets/b357c4d5-beff-4da7-99b6-03ede9a4aed7)
+
+
+Question 4 :
+
+![RFC_RRQ_WRQ](https://github.com/user-attachments/assets/cd53e6e5-be78-4d9e-a72a-2ef683973779)
