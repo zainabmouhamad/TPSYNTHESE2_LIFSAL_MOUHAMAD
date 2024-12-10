@@ -1,0 +1,45 @@
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+
+int main(int argc, char *argv[]) 
+{
+// Extract command-line arguments passed to the program
+  const char *host = argv[1]; // The server address (TFTP server)
+  const char *file = argv[2]; // The file to be transferred
+  const char *port = argv[3]; // The port number for the TFTP server
+
+
+  printf("Serveur TFTP : %s\n", host);
+  printf("File : %s\n", file);
+  printf("Port : %s\n", port);
+
+  int e; // Variable to hold error codes
+  struct addrinfo hints ;
+
+  memset(&hints,0,sizeof(struct addrinfo));// Initialize the hints structure to zero
+  struct addrinfo *res,*r;
+  hints.ai_family = AF_INET; // Specify IPv4 addresses   
+  hints.ai_protocol= IPPROTO_UDP;// Specify UDP protocol
+
+// Call getaddrinfo to resolve the server's address and port
+  e=getaddrinfo(argv[1],argv[3],&hints, &res);
+  
+ // If getaddrinfo fails, print the error message and exit 
+  if (e != 0) 
+  	{
+             fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(e));
+             return EXIT_FAILURE;
+        }
+ // Iterate through the linked list of address information returned by getaddrinfo
+  for(r=res;r!=NULL;r=r->ai_next)
+	{
+  	      printf("Famille =%d ,type socket =%d ,protocol=%d\n",r->ai_family,r->ai_socktype,r->ai_protocol);
+ 	}
+  freeaddrinfo(res);//free the memory allocated
+  exit(EXIT_SUCCESS);
+}
