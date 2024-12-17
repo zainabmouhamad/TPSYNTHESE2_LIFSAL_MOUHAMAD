@@ -1,0 +1,60 @@
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+// Define the buffer size for receiving and sending TFTP packets
+#define BUFFER_SIZE 516  // 512 bytes for data + 4 bytes for header (opcode and block number)
+int main(int argc, char *argv[]) {
+      const char *host = argv[1];// The TFTP server address
+    const char *file = argv[2]; // The name of the file to be requested
+    const char *port = argv[3]; // The port to be used (usually 69 for TFTP)
+    printf("Serveur TFTP : %s\n", host);
+    printf("File : %s\n", file);
+    printf("Port : %s\n", port);
+      int e;
+      int sockfd;// Socket file descriptor
+    unsigned char rrq[BUFFER_SIZE];// Buffer to store the RRQ reques
+      struct addrinfo hints ;// Struct to hold hints for address resolution
+      memset(&hints,0,sizeof(struct addrinfo));
+      struct addrinfo *res,*r;// Pointers to store the resolved address information
+      hints.ai_family = AF_INET; // Use IPv4    
+    hints.ai_protocol= IPPROTO_UDP;  // Use UDP protocol
+    hints.ai_socktype = SOCK_DGRAM; // Use datagram socket for UDP
+    e=getaddrinfo(argv[1],argv[3],&hints, &res); // Get address information using the server's host and port
+    // If getaddrinfo fails, print an error and exit
+      if (e != 0) {
+        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(e));
+        return EXIT_FAILURE;
+            }
+      for(r=res;r!=NULL;r=r->ai_next){
+            printf("Famille =%d ,type socket =%d ,protocol=%d\n",r->ai_family,r->ai_socktype,r->ai_protocol);
+            }     
+       sockfd = socket(AF_INET, SOCK_DGRAM,IPPROTO_UDP); // Create a UDP socket
+      if (sockfd == -1) {
+         perror("socket");
+             freeaddrinfo(res);// Free the address information
+              exit(EXIT_FAILURE);
+            }
+      printf("Socket created successfully, socket descriptor : %d\n", sockfd);
+      
+    int rrq_len;// Length of the RRQ packet
+    rrq[0] = 0x00;  // Opcode for RRQ
+    rrq[1] = 0x01;  
+    strcpy((char *)&rrq[2], file);   // Copy the file name to the RRQ packet
+    int file_len = strlen(file);// Length of the file name
+    strcpy((char *)&rrq[2 + file_len + 1], "octet");  // Mode for binary transfer ("octet")
+    rrq_len = 2 + file_len + 1 + 5 + 1;// 2 bytes for opcode, +1 for '\0', 5 bytes for "octet" +1 for '\0'
+     // Send the RRQ packet to the TFTP server
+      if (sendto(sockfd, rrq, rrq_len, 0, res->ai_addr, res->ai_addrlen) == -1) {
+            perror("sendto");  // Print error message if sendto fails
+            freeaddrinfo(res);
+            close(sockfd);
+            return EXIT_FAILURE;
+            }
+       printf("Requête RRQ envoyée pour le fichier : %s\n", file);
+       freeaddrinfo(res);
+     close(sockfd);
+     return EXIT_SUCCESS;
+}
