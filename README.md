@@ -16,10 +16,9 @@ We are able to display the information of the server in the terminal
 Question 3:
 Socket reservation involves using socket() to create a network communication point with the server, then checking that the returned descriptor is valid (not -1).
 
+In wireshark, we can see the communication between 127.0.0.1 and 127.0.0.53, with a protocol TFTP asking for a standart query and the destinator give a response to that query
+![image](https://github.com/user-attachments/assets/ded5abe5-345a-4b5e-871a-534ea8174519)
 
-
-![wireshark_q2](https://github.com/user-attachments/assets/8d5d9268-1831-4add-b3b2-4537190ed337)
-In wireshark, we can see the communication between 127.0.0.1 and 127.0.0.53, with a protocol DNS asking for a standart query and the destinator give a response to that query
 
 Question 3:
 We will use socket reservation that involves using socket() to create a network communication point with the server, then checking that the returned descriptor is valid (not -1).
@@ -29,7 +28,7 @@ We can see in the terminal that the socket is created:
 
 Question 4 :
 The goal of this part is to create an RRQ request.
-RRQ and WRQ packets (opcodes 1 and 2 respectively) have the format shown in Figure 5-1. So for this part we will have the value in the opcode.
+RRQ and WRQ packets (opcodes 1 and 2 respectively) have the format shown in the figure below. So for this part we will have the value in the opcode.
 
 ![RFC_RRQ_WRQ](https://github.com/user-attachments/assets/cd53e6e5-be78-4d9e-a72a-2ef683973779)
  Octet mode is used to transfer a file that is in the 8-bit format of the machine from which the file is being transferred.
