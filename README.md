@@ -29,6 +29,8 @@ We can see in the terminal that the socket is created:
 
 Question 4 :
 The goal of this part is to create an RRQ request.
+RRQ and WRQ packets (opcodes 1 and 2 respectively) have the format shown in Figure 5-1. So for this part we will have the value in the opcode.
 
 ![RFC_RRQ_WRQ](https://github.com/user-attachments/assets/cd53e6e5-be78-4d9e-a72a-2ef683973779)
  Octet mode is used to transfer a file that is in the 8-bit format of the machine from which the file is being transferred.
+ The first 2 bytes will have the value 1, then the 2nd position of the trame will have the filename, the 3rd position with have 1 bytes of value 0. the 4th position will have the mode 'octet' and a 1 byte of value 0.
