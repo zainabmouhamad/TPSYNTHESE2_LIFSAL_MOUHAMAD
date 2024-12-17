@@ -28,8 +28,7 @@ We can see in the terminal that the socket is created:
 
 
 Question 4 :
-The goal of this part is to create an RRQ requet et 
+The goal of this part is to create an RRQ request.
 
 ![RFC_RRQ_WRQ](https://github.com/user-attachments/assets/cd53e6e5-be78-4d9e-a72a-2ef683973779)
- Octet mode is used to transfer a file that is in the 8-bit
-   format of the machine from which the file is being transferred.
+ Octet mode is used to transfer a file that is in the 8-bit format of the machine from which the file is being transferred.
