@@ -34,3 +34,7 @@ RRQ and WRQ packets (opcodes 1 and 2 respectively) have the format shown in Figu
 ![RFC_RRQ_WRQ](https://github.com/user-attachments/assets/cd53e6e5-be78-4d9e-a72a-2ef683973779)
  Octet mode is used to transfer a file that is in the 8-bit format of the machine from which the file is being transferred.
  The first 2 bytes will have the value 1, then the 2nd position of the trame will have the filename, the 3rd position with have 1 bytes of value 0. the 4th position will have the mode 'octet' and a 1 byte of value 0.
+
+ After creating and sending a rrq we have this in the terminal:
+ 
+![thumbnail_image](https://github.com/user-attachments/assets/f1d6d8c2-ec79-4fd4-a048-4037a289a1ef)
