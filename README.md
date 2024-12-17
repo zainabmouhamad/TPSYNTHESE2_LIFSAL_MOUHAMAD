@@ -46,3 +46,5 @@ DATA packets (opcode = 3) have a block number and data field. The block numbers 
 ![Capture du 2024-12-17 11-25-08](https://github.com/user-attachments/assets/fb466a99-6d8c-4083-b220-c59beb4eb111)
 Figure 5-3 depicts an ACK packet; the opcode is 4.The  block  number  in  ACK echoes the block number of the DATA packet beingacknowledged.
 
+The test in Wireshark show some error as it shown as opcode unknown 
+
